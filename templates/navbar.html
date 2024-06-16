@@ -1,0 +1,15 @@
+<a href='/'>
+    <h1>home</h1>
+</a>
+
+<form method='GET' action="{% url 'home' %}">
+    <input type="text" name="q"/>
+</form>
+
+{% if request.user.is_authenticated %}
+<p>Hi, <a href="{% url 'user-profile' request.user.id %}">{{ request.user.username }}</a>!</p><a href="{% url 'logout' %}">Logout</a>
+{% else %}
+
+<a href="{% url 'login' %}">LOG-IN</a>
+{% endif %}
+<hr>
